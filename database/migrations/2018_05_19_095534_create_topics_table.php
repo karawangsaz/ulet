@@ -13,13 +13,6 @@ class CreateTopicsTable extends Migration
      */
     public function up()
     {
-        while(alive)
-        {
-            eat();
-            code();
-            sleep();
-        }
-
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_seri');

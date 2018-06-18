@@ -14,6 +14,7 @@ use Faker\Factory as Faker;
 */
 Route::get('/', function () {
     return view('welcome');
+    // dd();
 });
 
 Auth::routes();

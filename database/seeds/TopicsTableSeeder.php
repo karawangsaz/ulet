@@ -17,15 +17,15 @@ class TopicsTableSeeder extends Seeder
 
         $series_ids = DB::table('series')->pluck('id')->toArray();
 
-        for ($i=1; $i < count($series_ids)+1; $i++) { 
+        for ($i=1; $i <= count($series_ids); $i++) { 
             for ($j=0; $j < 5; $j++) { 
-                $author_ids = DB::table('series_authors')->pluck('id')->toArray();
+                $author_ids = DB::table('series_authors')->select('id_author')->where('id_seri', $i)->get()->toArray();
 
                 Topic::create([
                     'published' => $faker->numberBetween(0, 1),
                     'urutan' => $j,
                     'id_seri' => $i,
-                    'author' => $faker->randomElement($series_ids),
+                    'author' => $faker->randomElement($author_ids)->id_author,
                     'judul' => $faker->sentence(),
                     'thumbnail' => $faker->imageUrl(),
                     'url_video' => 'https://www.youtube.com/watch?v=CdvKoOmfZNE',

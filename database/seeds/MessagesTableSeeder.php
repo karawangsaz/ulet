@@ -26,8 +26,8 @@ class MessagesTableSeeder extends Seeder
              */
             if ($dari != $ke && $dari != 11 && $ke != 11) {
                 Message::create([
-                    'id_dari' => $faker->randomElement($user_ids),
-                    'id_ke' => $faker->randomElement($user_ids),
+                    'id_dari' => $dari,
+                    'id_ke' => $ke,
                     'pesan' => $faker->paragraph(5)
                 ]);        
             }                

@@ -17,11 +17,17 @@ class SeriesAuthorsTableSeeder extends Seeder
         $series_ids = DB::table('series')->pluck('id')->toArray();
         $author_ids = DB::table('users')->pluck('id')->toArray();
 
-        for ($i=1; $i < count($series_ids)+1; $i++) {
+        for ($i=1; $i <= count($series_ids); $i++) {
+            $author_id = $faker->randomElement($author_ids);
+
+            if ($author_id == 11) {
+                $author_id--;
+            }
+
             for ($j=0; $j < 2; $j++) { 
                 DB::table('series_authors')->insert([
                     'id_seri' => $i,
-                    'id_author' => $faker->randomElement($author_ids)
+                    'id_author' => $author_id
                 ]);
             }
         }

@@ -1,0 +1,71 @@
+.navbar {
+    font: 700 1em/1.5 Montserrat, Arial, sans-serif;
+}
+
+.nav-item.dropdown,
+.nav-item.dropdown .dropdown-menu{
+    font-weight: 600;
+    font-size: .9em;
+}
+
+.site-name {
+    font-weight: 700;
+}
+
+.sector {
+    min-height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 35px;
+    color: #fff;
+}
+
+.cover {
+    background: rgba(0, 0, 0, 0.65);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.sector>:not(.cover) {
+    z-index: 1;
+}
+
+.overlay {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2!important;
+}
+
+.sector-name,
+.sector .description,
+.sector .cover {
+    transition: .3s cubic-bezier(0.59, -0.3, 0.34, 1.34);
+}
+
+.sector-name {
+    margin-top: 2em;
+}
+
+.sector .description {
+    opacity: 0;
+    margin-top: -2em;
+}
+
+.sector:hover .sector-name {
+    margin-top: 0;
+}
+
+.sector:hover .description {
+    margin-top: 0;
+    opacity: 1;
+}
+
+.sector:hover .cover {
+    background: rgba(0, 0, 0, 0.45);
+}

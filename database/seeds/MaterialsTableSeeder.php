@@ -22,6 +22,7 @@ class MaterialsTableSeeder extends Seeder
 
             DB::table('materials')->insert([
                 'id_sector' => $faker->randomElement($sector_ids),
+                'thumbnail' => $faker->imageUrl(),
                 'slug' => $slug,
                 'nama' => $nama,
             ]);

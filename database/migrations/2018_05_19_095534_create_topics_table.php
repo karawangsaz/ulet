@@ -20,6 +20,7 @@ class CreateTopicsTable extends Migration
             $table->boolean('published');
             $table->unsignedSmallInteger('urutan');
             $table->string('author');
+            $table->string('slug');
             $table->string('judul');
             $table->string('thumbnail');
             $table->string('url_video');

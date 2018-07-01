@@ -17,9 +17,13 @@ class MaterialsTableSeeder extends Seeder
         $sector_ids = DB::table('sectors')->pluck('id')->toArray();
 
         for ($i=0; $i < 20; $i++) { 
+            $nama = ucfirst($faker->unique()->word);
+            $slug = str_slug($nama, '-');
+
             DB::table('materials')->insert([
                 'id_sector' => $faker->randomElement($sector_ids),
-                'nama' => ucfirst($faker->unique()->word)
+                'slug' => $slug,
+                'nama' => $nama,
             ]);
         }
     }

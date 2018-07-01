@@ -18,6 +18,7 @@ class CreateSeriesTable extends Migration
             $table->unsignedInteger('id_admin');
             $table->unsignedInteger('id_material');
 
+            $table->string('slug');
             $table->string('nama');
             $table->string('thumbnail');
             $table->text('deskripsi');

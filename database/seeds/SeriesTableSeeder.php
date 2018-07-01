@@ -17,11 +17,15 @@ class SeriesTableSeeder extends Seeder
         $material_ids = DB::table('materials')->pluck('id')->toArray();
         $admin_ids = DB::table('users')->pluck('id')->toArray();
 
-        for ($i=0; $i < 200; $i++) { 
+        for ($i=0; $i < 200; $i++) {
+            $title = ucfirst($faker->unique()->sentence);
+            $slug = str_slug($title, '-');
+
             DB::table('series')->insert([
                 'id_material' => $faker->randomElement($material_ids),
                 'id_admin' => $faker->randomElement($admin_ids),
-                'nama' => ucfirst($faker->unique()->sentence),
+                'slug' => $slug,
+                'nama' => $title,
                 'thumbnail' => $faker->imageUrl(),
                 'deskripsi' => $faker->paragraph,
             ]);

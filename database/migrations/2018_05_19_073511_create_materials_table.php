@@ -16,6 +16,8 @@ class CreateMaterialsTable extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_sector');
+            $table->string('thumbnail');
+            $table->string('slug');
             $table->string('nama');
 
             $table->foreign('id_sector')->references('id')->on('sectors');

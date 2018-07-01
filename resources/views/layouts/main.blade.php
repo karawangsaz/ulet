@@ -17,6 +17,7 @@
  
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
  
     <!-- Scripts -->
     @yield('header_scripts')

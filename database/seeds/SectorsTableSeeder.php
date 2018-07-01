@@ -15,9 +15,11 @@ class SectorsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i=0; $i < 3; $i++) {
+        for ($i=0; $i < 4; $i++) {
             DB::table('sectors')->insert([
-                'nama' => ucfirst($faker->word)
+                'thumbnail' => $faker->imageUrl(),
+                'nama' => ucfirst($faker->word),
+                'deskripsi_singkat' => ucfirst($faker->paragraph)
             ]);
         }
     }

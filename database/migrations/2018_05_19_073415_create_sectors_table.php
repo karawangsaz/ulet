@@ -17,6 +17,7 @@ class CreateSectorsTable extends Migration
             $table->increments('id');
             $table->string('thumbnail');
             $table->string('nama');
+            $table->text('deskripsi_singkat');
         });
     }
 

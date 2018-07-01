@@ -13,8 +13,10 @@ use Faker\Factory as Faker;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
-    // dd();
+    if (Auth::user())
+    {
+        return redirect('home');
+    }
 });
 
 Auth::routes();

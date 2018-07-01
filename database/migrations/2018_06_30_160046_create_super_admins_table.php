@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSectorsTable extends Migration
+class CreateSuperAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sectors', function (Blueprint $table) {
+        Schema::create('super_admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('thumbnail');
-            $table->string('nama');
+            $table->string('email');
+            $table->string('password');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateSectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectors');
+        Schema::dropIfExists('super_admins');
     }
 }

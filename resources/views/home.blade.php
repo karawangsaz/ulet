@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! ID Anda: {{ Auth::id() }}
                 </div>
             </div>
         </div>

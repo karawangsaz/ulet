@@ -16,7 +16,7 @@ class SectorsTableSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i=0; $i < 4; $i++) {
-            $name = ucfirst($faker->word);
+            $name = ucfirst($faker->words(2, true));
             $slug = str_slug($name, '-');
 
             DB::table('sectors')->insert([

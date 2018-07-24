@@ -70,3 +70,7 @@
 .sector:hover .cover {
     background: rgba(0, 0, 0, 0.45);
 }
+
+.logout_button button {
+    cursor: pointer;
+}

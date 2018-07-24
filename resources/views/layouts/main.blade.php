@@ -46,10 +46,13 @@
                         {{ Auth::user()->nama }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profil</a>
+                        <a class="dropdown-item" href="{{ url('profile') }}">Profil</a>
                         <a class="dropdown-item" href="#">Pengaturan</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <form class="logout_button" action="logout" method="POST">
+                            @csrf
+                            <button class="dropdown-item" type="submit">Logout</button>
+                        </form>
                     </div>
                 </li>
             </ul>

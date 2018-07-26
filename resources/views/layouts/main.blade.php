@@ -1,7 +1,3 @@
-@php
-// dd(Auth::user()->toArray())
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +20,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <h1 class="site-name"><a class="navbar-brand" href="#">{{ env('APP_NAME') }}</a></h1>
+        <h1 class="site-name"><a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME') }}</a></h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,7 +43,6 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('profile') }}">Profil</a>
-                        <a class="dropdown-item" href="#">Pengaturan</a>
                         <div class="dropdown-divider"></div>
                         <form class="logout_button" action="logout" method="POST">
                             @csrf

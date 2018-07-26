@@ -29,7 +29,6 @@ class HomeController extends Controller
         
         $data = [
             'sectors' => $sectors,
-            'i' => 0,
         ];
 
         return view('pages/sectors', $data);

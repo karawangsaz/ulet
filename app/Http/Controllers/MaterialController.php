@@ -19,6 +19,7 @@ class MaterialController extends Controller
             $some_series = DB::table('series')
                 ->select(DB::raw('nama, slug'))
                 ->where('id_material', $materials[$i]->id)
+                ->inRandomOrder()
                 ->limit(3)
                 ->get()->toArray();
 

@@ -7,9 +7,26 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
+    public function series_list($slug)
+    {
+        $material = DB::table('materials')
+            ->where('slug', $slug)
+            ->get()->toArray()[0];
+
+        $series = DB::table('series')
+            ->where('id_material', $material->id)
+            ->get()->toArray();
+
+        $data = [
+            'material' => $material,
+            'series' => $series,
+        ];
+
+        return view('pages/topics', $data);
+    }
+
     public function view($slug, $id = 0)
     {
-        
         $seri = DB::table('series')
             ->where('slug', $slug)
             ->get()->toArray()[0];
@@ -28,8 +45,6 @@ class SeriesController extends Controller
                 'urutan' => $id,
             ])
             ->get()->toArray()[0];
-
-// dd($topic);
 
         $data = [
             'material' => $material,

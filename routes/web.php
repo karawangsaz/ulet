@@ -27,4 +27,5 @@ Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/{id}', 'ProfileController@view');
 
 Route::get('/sector/{slug}', 'MaterialController@view');
+Route::get('/material/{slug}', 'SeriesController@series_list');
 Route::get('/series/{slug}/{id?}', 'SeriesController@view');

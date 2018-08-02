@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/edit', 'ProfileController@edit');
+Route::put('/profile/edit', 'ProfileController@update');
 Route::get('/profile/{id}', 'ProfileController@view');
 
 Route::get('/sector/{slug}', 'MaterialController@view');

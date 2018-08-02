@@ -8,10 +8,8 @@
             <div class="col-md-10">
                 <div class="shadow p-4 mb-5 bg-white rounded">
                     <div class="profile d-flex align-items-center">
-                        <div class="d-flex justify-content-center align-items-center profile-picture {{ $user->foto ? 'image' : 'letter' }} float-left rounded-circle align-middle mr-3">
-                            @if ($user->foto)
-                                <img src="{{ $user->foto }}" alt="Foto profil saya">
-                            @else
+                        <div class="d-flex justify-content-center align-items-center profile-picture {{ $user->foto ? 'image' : 'letter' }} float-left rounded-circle align-middle mr-3" {!! $user->foto ? 'style="background-image: url(' . url($user->foto) . ')"' : '' !!}>
+                            @if (!$user->foto)
                                 <h3 class="mb-0">{{ substr($user->nama, 0, 1) }}</h3>
                             @endif
                         </div>

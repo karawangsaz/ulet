@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 
 class ProfileController extends Controller
 {
@@ -62,5 +65,30 @@ class ProfileController extends Controller
 
             return view('pages/edit-profile', $data);
         }
+    }
+
+    public function update(Request $request)
+    {
+        $input = $request->all();
+
+        // Proses data
+        $data = [
+            'foto' => $input['profile_picture'],
+            'tempat_lahir' => $input['tempat_lahir'],
+            'tgl_lahir' => $input['tanggal_lahir'],
+            'nama' => $input['nama'],
+            'biografi' => $input['biografi'],
+        ];
+        
+        // Proses gambar
+        $path = $request->file('profile_picture')->store('public/photos');
+
+        $data['foto'] = str_replace('public', 'storage', $path);
+
+        DB::table('users')
+            ->where('id', Auth::user()->id)
+            ->update($data);
+
+        return redirect('profile');
     }
 }

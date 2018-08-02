@@ -40,7 +40,7 @@
     @endforeach
 
     <script>
-        $('input[name="tanggal_lahir"]').daterangepicker({
+        $('#tanggal_lahir').daterangepicker({
 
             @if ($user->tgl_lahir)
                 @php
@@ -60,7 +60,8 @@
             }
 
         }, function (start, end, label) {
-            $('input[name="tanggal_lahir"]').val(start.format('L'));
+            $('#tanggal_lahir').val(start.format('DD/MM/YYYY'));
+            $('input[name="tanggal_lahir"]').val(start.format('YYYY-MM-DD'));
         });
     </script>
 @endsection
@@ -70,21 +71,21 @@
         <div class="row justify-content-md-center">
             <div class="col-md-10">
                 <div class="shadow p-4 mb-5 bg-white rounded">
-                    <form action="profile/edit" class="form">
+                    <form method="POST" action="{{ url('profile/edit') }}" class="form" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
                         <div class="profile fluid-container">
                             <div class="row justify-content-md-center">
                                 <div class="col-md-12 mt-3 mb-4">
                                     <div class="d-flex justify-content-center">
-                                        <div class="d-flex justify-content-center align-items-center profile-picture edit {{ $user->foto ? 'image' : 'letter' }} rounded-circle align-middle">
+                                        <div class="d-flex justify-content-center align-items-center profile-picture edit {{ $user->foto ? 'image' : 'letter' }} rounded-circle align-middle" {!! $user->foto ? 'style="background-image: url(' . url($user->foto) . ')"' : '' !!}>
                                             <a href="#" class="cover position-absolute"></a>
 
                                             <div id="change-profile-picture" class="change-pp-button overlay position-absolute d-flex justify-content-center align-items-center" tabindex="0" data-toggle="popover" data-trigger="hover" title="Foto Profil" data-content="Gambar harus berukuran minimal 300x300 px dengan format png/jpg">
                                                 <i class="fas fa-2x fa-camera"></i>
                                             </div>
 
-                                            @if ($user->foto)
-                                                <img src="{{ $user->foto }}" alt="Foto profil saya">
-                                            @else
+                                            @if (!$user->foto)
                                                 <h1 class="display-3">{{ substr($user->nama, 0, 1) }}</h1>
                                             @endif
                                         </div>
@@ -120,7 +121,8 @@
                                                     <div class="form-group">
                                                         <label for="tanggal_lahir">Tanggal Lahir</label>
                                                         <br>
-                                                        <input class="form-control" id="tanggal_lahir" type="text" name="tanggal_lahir" value="{{ $user->tgl_lahir ? $date : '' }}">
+                                                        <input class="form-control" id="tanggal_lahir" type="text" value="{{ $user->tgl_lahir ? $date : '' }}">
+                                                        <input type="text" name="tanggal_lahir" value="{{ $user->tgl_lahir }}" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

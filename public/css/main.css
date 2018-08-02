@@ -83,6 +83,7 @@ body {
     width: 100px;
     height: 100px;
     overflow: hidden;
+    background-size: cover;
 }
 
 .profile-picture.letter {

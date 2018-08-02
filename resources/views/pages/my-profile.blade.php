@@ -21,7 +21,17 @@
                                     <h2>{{ $user->nama }} <small>({{ $user->npm }})</small></h2>
                                 </div>
                                 <div class="born">
-                                    {{ $user->tempat_lahir }} {{ $user->tgl_lahir }}
+                                    @if ($user->tgl_lahir)
+                                        @php
+                                            $newLocale = setlocale(LC_TIME, 'Indonesian');
+
+                                            $dt = \Carbon\Carbon::parse($user->tgl_lahir);
+                                            $dt = \Carbon\Carbon::create($dt->year, $dt->month, $dt->day, 00, 00, 00);
+
+                                            $date = $dt->formatLocalized('%d %B %Y');
+                                        @endphp
+                                    @endif
+                                    {{ $user->tempat_lahir }}{{ $user->tgl_lahir ? ', ' . $date : ''}}
                                 </div>
                             @else
                                 <div class="name-npm">

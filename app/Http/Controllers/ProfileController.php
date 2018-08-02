@@ -73,17 +73,18 @@ class ProfileController extends Controller
 
         // Proses data
         $data = [
-            'foto' => $input['profile_picture'],
             'tempat_lahir' => $input['tempat_lahir'],
             'tgl_lahir' => $input['tanggal_lahir'],
             'nama' => $input['nama'],
             'biografi' => $input['biografi'],
         ];
-        
-        // Proses gambar
-        $path = $request->file('profile_picture')->store('public/photos');
 
-        $data['foto'] = str_replace('public', 'storage', $path);
+        // Proses gambar
+        if ( isset($input['profile_picture']) ) {
+            $data['foto'] = $input['profile_picture'];
+            $path = $request->file('profile_picture')->store('public/photos');
+            $data['foto'] = str_replace('public', 'storage', $path);
+        }
 
         DB::table('users')
             ->where('id', Auth::user()->id)

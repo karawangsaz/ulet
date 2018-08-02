@@ -38,6 +38,31 @@
     @foreach ($scripts['footer'] as $script)
         <script src="{{ $script }}"></script>
     @endforeach
+
+    <script>
+        $('input[name="tanggal_lahir"]').daterangepicker({
+
+            @if ($user->tgl_lahir)
+                @php
+                    $dt = \Carbon\Carbon::parse($user->tgl_lahir);
+                    $date = $dt->day . '/' . $dt->month . '/' . $dt->year;
+                @endphp
+                startDate: '{{ $date }}',
+            @endif
+
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1930,
+            maxYear: moment().format('YYYY'),
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+
+        }, function (start, end, label) {
+            $('input[name="tanggal_lahir"]').val(start.format('L'));
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -95,7 +120,7 @@
                                                     <div class="form-group">
                                                         <label for="tanggal_lahir">Tanggal Lahir</label>
                                                         <br>
-                                                        <input class="form-control" id="tanggal_lahir" type="text" name="tanggal_lahir" value="{{ $user->tgl_lahir }}">
+                                                        <input class="form-control" id="tanggal_lahir" type="text" name="tanggal_lahir" value="{{ $user->tgl_lahir ? $date : '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

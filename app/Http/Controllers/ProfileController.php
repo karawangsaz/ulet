@@ -35,4 +35,27 @@ class ProfileController extends Controller
 
         return view('pages/others-profile', $data);
     }
+    
+    public function edit()
+    {
+        if (!Auth::check()) {
+            return redirect('login')->with('login_is_required', 'Login is required!');
+        } else {
+            $user = DB::table('users')
+                ->find(Auth::user()->id);
+
+            $data = [
+                'user' => $user,
+                'stylesheets' => [],
+                'scripts' => [
+                    'header' => [],
+                    'footer' => [
+                        url('js/profile.js'),
+                    ],
+                ],
+            ];
+
+            return view('pages/edit-profile', $data);
+        }
+    }
 }

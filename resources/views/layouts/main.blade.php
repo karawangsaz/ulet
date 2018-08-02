@@ -7,8 +7,9 @@
     <title>@yield('title')</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="\node_modules\bootstrap\dist\css\bootstrap.min.css">
-    <link rel="stylesheet" href="\css\main.css">
+    <link rel="stylesheet" href="{{ url('\node_modules\bootstrap\dist\css\bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('\css\main.css') }}">
+    <link rel="stylesheet" href="{{ url('\node_modules\@fortawesome\fontawesome-free\css\all.min.css') }}">
     @yield('stylesheets')
  
     <!-- Fonts -->

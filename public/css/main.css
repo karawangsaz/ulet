@@ -89,3 +89,29 @@ body {
     background: #1580ee;
     color: #fff;
 }
+
+.profile-picture.edit {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.profile-picture.edit>.cover {
+    background-color: transparent;
+    transition-duration: .35s;
+}
+
+.change-pp-button {
+    opacity: 0;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+.profile-picture.edit:hover>.cover {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.profile-picture.edit:hover>.change-pp-button {
+    opacity: 1;
+}

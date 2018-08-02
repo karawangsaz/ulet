@@ -52,9 +52,11 @@
                                     <div class="d-flex justify-content-center">
                                         <div class="d-flex justify-content-center align-items-center profile-picture edit {{ $user->foto ? 'image' : 'letter' }} rounded-circle align-middle">
                                             <a href="#" class="cover position-absolute"></a>
-                                            <div id="change-profile-picture" class="change-pp-button overlay position-absolute d-flex justify-content-center align-items-center">
+
+                                            <div id="change-profile-picture" class="change-pp-button overlay position-absolute d-flex justify-content-center align-items-center" tabindex="0" data-toggle="popover" data-trigger="hover" title="Foto Profil" data-content="Gambar harus berukuran minimal 300x300 px dengan format png/jpg">
                                                 <i class="fas fa-2x fa-camera"></i>
                                             </div>
+
                                             @if ($user->foto)
                                                 <img src="{{ $user->foto }}" alt="Foto profil saya">
                                             @else

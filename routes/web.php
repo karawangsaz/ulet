@@ -23,11 +23,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'ProfileController@index');
-Route::get('/profile/edit', 'ProfileController@edit');
-Route::put('/profile/edit', 'ProfileController@update');
-Route::get('/profile/{id}', 'ProfileController@view');
-
-Route::get('/sector/{slug}', 'MaterialController@view');
-Route::get('/material/{slug}', 'SeriesController@series_list');
-Route::get('/series/{slug}/{id?}', 'SeriesController@view');
+Route::group(['middleware' => ['ceklogin']], function () {
+    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/edit', 'ProfileController@edit');
+    Route::put('/profile/edit', 'ProfileController@update');
+    Route::get('/profile/{id}', 'ProfileController@view');
+    
+    Route::get('/sector/{slug}', 'MaterialController@view');
+    Route::get('/material/{slug}', 'SeriesController@series_list');
+    Route::get('/series/{slug}/{id?}', 'SeriesController@view');
+});

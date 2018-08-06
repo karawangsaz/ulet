@@ -13,18 +13,14 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        if (!Auth::check()) {
-            return redirect('login')->with('login_is_required', 'Login is required!');
-        } else {
-            $user = Auth::user();
-            // dd(Auth::user()->npm);
+        $user = Auth::user();
+        // dd(Auth::user()->npm);
 
-            $data = [
-                'user' => $user,
-            ];
+        $data = [
+            'user' => $user,
+        ];
 
-            return view('pages/my-profile', $data);
-        }
+        return view('pages/my-profile', $data);
     }
 
     public function view($id)

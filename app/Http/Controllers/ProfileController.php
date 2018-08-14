@@ -77,9 +77,15 @@ class ProfileController extends Controller
 
         // Proses gambar
         if ( isset($input['profile_picture']) ) {
-            $data['foto'] = $input['profile_picture'];
             $path = $request->file('profile_picture')->store('public/photos');
             $data['foto'] = str_replace('public', 'storage', $path);
+
+            // hapus foto lama
+            if (Auth::user()->foto) {
+                $old_foto = str_replace('storage', 'public', Auth::user()->foto);
+
+                Storage::delete($old_foto);
+            }
         }
 
         DB::table('users')

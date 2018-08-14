@@ -16,6 +16,11 @@ Route::get('/', function () {
     if (Auth::user())
     {
         return redirect('home');
+    } else {
+        return "
+        <a href='/login'>Login</a>
+        <a href='/register'>Register</a>
+        ";
     }
 });
 

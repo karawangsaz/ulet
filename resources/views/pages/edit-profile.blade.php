@@ -40,25 +40,32 @@
     @endforeach
 
     <script>
-        $('#tanggal_lahir').daterangepicker({
+        @php
+            $now = \Carbon\Carbon::now();
+            $max = \Carbon\Carbon::parse($now->year-5 . '-12-01');
+            $minDate = '1930/01/01 00:00:00';
+            $maxDate = $max->year . '/' . $max->month . '/' . $max->lastOfMonth()->day . ' 00:00:00';
+            $startDate = '2000/01/01 00:00:00';
+        @endphp
 
-            @if ($user->tgl_lahir)
-                @php
-                    $dt = \Carbon\Carbon::parse($user->tgl_lahir);
-                    $date = $dt->day . '/' . $dt->month . '/' . $dt->year;
-                @endphp
-                startDate: '{{ $date }}',
-            @endif
+        @if ($user->tgl_lahir)
+            @php
+                $dt = \Carbon\Carbon::parse($user->tgl_lahir);
+                $date = $dt->day . '/' . $dt->month . '/' . $dt->year;
+            @endphp
+        @endif
 
+        $('#tanggal_lahir').daterangepicker({            
             singleDatePicker: true,
             showDropdowns: true,
-            minYear: 1930,
-            maxYear: moment().format('YYYY'),
+            startDate: '{{ $startDate }}',
+            minDate: '{{ $minDate }}',
+            maxDate: '{{ $maxDate }}',
             autoUpdateInput: false,
             locale: {
+                format: 'YYYY/MM/DD HH:mm:ss',
                 cancelLabel: 'Clear'
             }
-
         }, function (start, end, label) {
             $('#tanggal_lahir').val(start.format('DD/MM/YYYY'));
             $('input[name="tanggal_lahir"]').val(start.format('YYYY-MM-DD'));
@@ -107,21 +114,21 @@
                                                     <div class="form-group">
                                                         <label for="nama">NPM</label>
                                                         <br>
-                                                        <input class="form-control" id="nama" type="text" value="{{ $user->npm }}" disabled aria-disabled="true">
+                                                        <input class="form-control" id="nama" type="text" value="{{ $user->npm }}" disabled aria-disabled="true" autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="tempat_lahir">Tempat Lahir</label>
                                                         <br>
-                                                        <input class="form-control" id="tempat_lahir" type="text" name="tempat_lahir" value="{{ $user->tempat_lahir }}">
+                                                        <input class="form-control" id="tempat_lahir" type="text" name="tempat_lahir" value="{{ $user->tempat_lahir }}" autocomplete="off">
                                                     </div>                                            
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="tanggal_lahir">Tanggal Lahir</label>
                                                         <br>
-                                                        <input class="form-control" id="tanggal_lahir" type="text" value="{{ $user->tgl_lahir ? $date : '' }}">
+                                                        <input class="form-control" id="tanggal_lahir" type="text" value="{{ $user->tgl_lahir ? $date : '' }}" autocomplete="off">
                                                         <input type="text" name="tanggal_lahir" value="{{ $user->tgl_lahir }}" hidden>
                                                     </div>
                                                 </div>

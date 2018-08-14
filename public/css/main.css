@@ -116,3 +116,7 @@ body {
 .profile-picture.edit:hover>.change-pp-button {
     opacity: 1;
 }
+
+.bio pre {
+    font-family: inherit;
+}

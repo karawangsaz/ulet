@@ -42,8 +42,12 @@
                     @if ($user->biografi)
                         <hr>
                         <div class="bio">
-                            {{ $user->biografi }}
+                            <pre>{!! nl2br(e($user->biografi)) !!}</pre>
                         </div>
+                    @endif
+                    @if (Auth::user()->id == $user->id)
+                        <a href="{{ url('profile/edit') }}" class="float-right btn btn-primary btn-edit-profile {{ $user->biografi ? 'mt-3' : '' }}">Edit Profil</a>
+                        <div class="clearfix"></div>
                     @endif
                 </div>
             </div>

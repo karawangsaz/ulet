@@ -20,7 +20,7 @@ class ProfileController extends Controller
             'user' => $user,
         ];
 
-        return view('pages/my-profile', $data);
+        return view('pages/profile', $data);
     }
 
     public function view($id)
@@ -32,7 +32,7 @@ class ProfileController extends Controller
             'user' => $user,
         ];
 
-        return view('pages/others-profile', $data);
+        return view('pages/profile', $data);
     }
     
     public function edit()

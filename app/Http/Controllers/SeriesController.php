@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
@@ -54,5 +55,28 @@ class SeriesController extends Controller
         ];
 
         return view('pages/series', $data);
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+
+        $courses = DB::table('series')
+            ->select()
+            ->where('id_admin', $user->id)
+            ->orderBy('id', 'desc')
+            ->get()->toArray();
+
+        $data = [
+            'title' => 'Kursusku',
+            'courses' => $courses,
+            'stylesheets' => [
+                url('css/courses.css'),
+            ],
+            'header_scripts' => [],
+            'footer_scripts' => [],
+        ];
+
+        return view('pages/courses', $data);
     }
 }

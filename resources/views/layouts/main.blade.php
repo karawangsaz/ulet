@@ -44,6 +44,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('profile') }}">Profil</a>
+                        <a class="dropdown-item" href="{{ url('courses') }}">Kursusku</a>
                         <div class="dropdown-divider"></div>
                         <form class="logout_button" action="logout" method="POST">
                             @csrf

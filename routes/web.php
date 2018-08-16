@@ -37,4 +37,6 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::get('/sector/{slug}', 'MaterialController@view');
     Route::get('/material/{slug}', 'SeriesController@series_list');
     Route::get('/series/{slug}/{id?}', 'SeriesController@view');
+
+    Route::get('/courses', 'SeriesController@edit');
 });

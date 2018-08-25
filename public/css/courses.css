@@ -1,16 +1,17 @@
-.container.courses {
-    background: #fff;
-    margin: 20px auto;
+h2.title {
+    font-size: 1.1em;
+    font-weight: 400;
 }
-
-.box {
-    padding: 20px 0;
-    border-bottom: 1px solid #c9c9c9;
+.btn-actions {
+    opacity: 0;
 }
-
-.thumbnail {
-    float: left;
-    width: 250px;
-    height: 250px;
-    margin-right: 20px;
+td:hover .btn-actions {
+    opacity: 1;
+}
+td:active .btn-actions {
+    opacity: 1;
+}
+.btn-actions,
+.btn-actions a {
+    color: #62adff!important;
 }

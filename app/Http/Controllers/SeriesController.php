@@ -67,7 +67,25 @@ class SeriesController extends Controller
             ->orderBy('id', 'desc')
             ->get()->toArray();
 
+        $cauthor = DB::table('series_authors')
+            ->select()
+            ->where('id_author', $user->id)
+            ->orderBy('id', 'desc')
+            ->get()->toArray();
+
+        foreach ($cauthor as $ca) {
+            $cauthors = DB::table('series')
+                ->select()
+                ->where('id', $ca->id_seri)
+                ->get()->toArray();
+
+            array_push($courses, $cauthors[0]);
+        }
+
+        // dd($courses);
+
         $data = [
+            'user' => $user,
             'title' => 'Kursusku',
             'courses' => $courses,
             'stylesheets' => [

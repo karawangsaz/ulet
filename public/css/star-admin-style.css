@@ -13500,8 +13500,7 @@ body {
 
 .form-control,
 .form-control:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none; }
+  box-shadow: none; }
 
 .form-control {
   box-shadow: none; }

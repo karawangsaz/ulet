@@ -23,6 +23,10 @@ class CreateSeriesTable extends Migration
             $table->string('thumbnail');
             $table->text('deskripsi');
 
+            $table->boolean('approved')->default(0);
+            $table->boolean('published')->default(0);
+            $table->timestamp('updated_at')->useCurrent();
+
             $table->foreign('id_admin')->references('id')->on('users');
             $table->foreign('id_material')->references('id')->on('materials');
         });

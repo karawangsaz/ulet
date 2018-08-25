@@ -28,6 +28,8 @@ class SeriesTableSeeder extends Seeder
                 'nama' => $title,
                 'thumbnail' => $faker->imageUrl(),
                 'deskripsi' => $faker->paragraph,
+                'approved' => numberBetween(0, 1),
+                'published' => 0,
             ]);
         }
     }

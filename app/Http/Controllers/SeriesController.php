@@ -64,25 +64,23 @@ class SeriesController extends Controller
         $courses = DB::table('series')
             ->select()
             ->where('id_admin', $user->id)
-            ->orderBy('id', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->get()->toArray();
 
         $cauthor = DB::table('series_authors')
             ->select()
             ->where('id_author', $user->id)
-            ->orderBy('id', 'desc')
             ->get()->toArray();
 
         foreach ($cauthor as $ca) {
             $cauthors = DB::table('series')
                 ->select()
                 ->where('id', $ca->id_seri)
+                ->orderBy('updated_at', 'desc')
                 ->get()->toArray();
 
             array_push($courses, $cauthors[0]);
         }
-
-        // dd($courses);
 
         $data = [
             'user' => $user,

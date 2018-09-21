@@ -205,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-success btn-block">New Project
+                        <button class="btn btn-success btn-block">Ajukan Kursus
                             <i class="mdi mdi-plus"></i>
                         </button>
                     </div>
